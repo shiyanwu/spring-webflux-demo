@@ -1,6 +1,7 @@
 package com.syw.study.domain;
 
 import lombok.Data;
+import org.springframework.data.annotation.Id;
 
 /**
  * @author shiyanwu
@@ -12,6 +13,7 @@ public class City {
     /**
      * 城市编号
      */
+    @Id
     private Long id;
 
     /**

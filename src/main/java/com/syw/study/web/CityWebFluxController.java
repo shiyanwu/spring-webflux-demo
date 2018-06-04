@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -36,12 +35,12 @@ public class CityWebFluxController {
     }
 
     @PostMapping
-    public Mono<Long> saveCity(@RequestBody City city) {
+    public Mono<City> saveCity(@RequestBody City city) {
         return cityHandler.save(city);
     }
 
     @PutMapping
-    public Mono<Long> modifyCity(@RequestBody City city) {
+    public Mono<City> modifyCity(@RequestBody City city) {
         return cityHandler.modifyCity(city);
     }
 
