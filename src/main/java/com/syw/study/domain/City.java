@@ -3,12 +3,16 @@ package com.syw.study.domain;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 
+import java.io.Serializable;
+
 /**
  * @author shiyanwu
  * 城市实体
  */
 @Data
-public class City {
+public class City implements Serializable {
+
+    private static final long serialVersionUID = 2081533488991048064L;
 
     /**
      * 城市编号
