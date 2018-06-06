@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -26,6 +27,7 @@ public class CityWebFluxController {
     private CityHandler cityHandler;
 
     private static final String CITY_LIST_PATH_NAME = "cityList";
+    private static final String CITY_PATH_NAME = "city";
 
     @GetMapping("/hello")
     public Mono<String> hello(final Model model) {
@@ -41,6 +43,14 @@ public class CityWebFluxController {
         final Flux<City> cityFluxList = cityHandler.findAllCity();
         model.addAttribute("cityList", cityFluxList);
         return CITY_LIST_PATH_NAME;
+    }
+
+    @GetMapping("/getByName")
+    public String getByCityName(final Model model,
+                                @RequestParam("cityName") String cityName) {
+        final Mono<City> city = cityHandler.getByCityName(cityName);
+        model.addAttribute("city", city);
+        return CITY_PATH_NAME;
     }
 
     @GetMapping(value = "/{id}")
